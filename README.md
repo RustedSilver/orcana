@@ -18,7 +18,7 @@ I couldn’t find an existing tool that did exactly what I had in mind, so I dec
 
 Very immature. It kind of works, sometimes. I'm still figuring out:
 
-- Requires insalled seperatly **Docker** and **Docker Compose** (the newer `docker compose` CLI).  
+- Requires **Docker** and **Docker Compose** (the newer `docker compose` CLI).  
   It **won't work** with the legacy `docker-compose` binary.
 - Currently, the only feature is the ability to **enable or disable services** within a Compose file — similar in spirit to how Helm manages components in Kubernetes.
 - The goal is for this to evolve into a more **mature tool for managing local servers**.  
