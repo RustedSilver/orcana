@@ -23,11 +23,12 @@ Very immature. It kind of works, sometimes. I'm still figuring out:
   It **won't work** with the legacy `docker-compose` binary.
 - Currently, the only feature is the ability to **enable or disable services** within a Compose file — similar in spirit to how Helm manages components in Kubernetes.
 - The goal is for this to evolve into a more **mature tool for managing local servers**.
-  At the moment, it simply wraps `docker compose` using `exec.Command`, but I'm exploring better ways to integrate with the Docker API in the future.
+  At the moment, it simply wraps `docker compose` using `exec.Command`, but I'm exploring even ideas of using directly `docker` instead in the future.
 
 ## 🛠 Tech Stack
 
-- go/cobra
+- go
+- cobra
 - go-yaml
 - Whatever else I feel like adding as I go
 
