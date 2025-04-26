@@ -1,0 +1,44 @@
+name: project-1
+
+services:
+  app_1:
+    image: registry/project/orcana:0.0.1
+    container_name: orcana_1
+    restart: always
+    x-enabled: false
+    volumes:
+      - "./volumes/app:/etc/data"
+    networks:
+      - local
+
+  app_2:
+    image: registry/project/orcana:0.0.2
+    container_name: orcana_2
+    restart: always
+    volumes:
+      - "./volumes/app:/etc/data"
+    networks:
+      - local
+
+  app_3:
+    image: registry/project/orcana:0.0.3
+    container_name: orcana_3
+    restart: never
+    x-enabled: true
+    volumes:
+      - "./volumes/app:/etc/data"
+    networks:
+      - local
+
+  app_4:
+    image: registry/project/orcana:0.0.4
+    container_name: orcana_4
+    restart: always
+    x-enabled: cdakcldsacalksclkdsa
+    volumes:
+      - "./volumes/app:/etc/data"
+    networks:
+      - local
+
+networks:
+  local:
