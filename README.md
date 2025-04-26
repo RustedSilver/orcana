@@ -1,5 +1,5 @@
 
-# 🚧 WIP: [orcana]
+# 🚧 WIP: orcana
 
 > **Note:** This is a personal project, currently in its early stages.  
 > I'm building it by myself in an unfamliar languange — expect rough edges, possible bugs, and changes without warning.
@@ -7,26 +7,28 @@
 
 ## 🧠 What is this?
 
-**[Orcana]** is an experimental tool I'm working on **[to add additional functionality on a docker compose orchestration]**.  
-It's mainly intended for use in **[single-node environment like, a single server on top of docker compose]**, and it may or may not evolve into something more robust.
+**Orcana** is an experimental tool I'm working on **to add additional functionality on a docker compose orchestration**.  
+It's mainly intended for use in **single-node environment like, a single server on top of docker compose**, and it may or may not evolve into something more robust.
 
 ## 🔍 Why?
 
-Because I modified an old PC into a home server and am running a local infrastructure with docker on it. I needed something that simplified **[my docker compose orchestration as I did not want to use kubernetes or swarm as they are overkil]**.  
-I couldn’t find an existing tool that fit exactly what I wanted, so I decided to roll my own. It’s also an excuse to learn more about **[golang and building cli applications]**.
+Because I repurposed an old PC into a home server and started running a local infrastructure using Docker, I wanted a simpler way to manage my Docker Compose setup. Kubernetes and Swarm felt like overkill for a single-node environment, so I set out to build something lightweight that fit my needs.
+I couldn’t find an existing tool that did exactly what I had in mind, so I decided to roll my own — and it's also a great excuse to dive deeper into Go and learn more about building CLI applications.
 
 ## 🚀 Current Status
 
 Very immature. It kind of works, sometimes. I'm still figuring out:
 
-- [It requires docker & docker compose preinstalled. Will not work with old version of compose "docker-compose"]
-- [Till now the only thing it does is giving the possibility to enable dissable a services on a compose file, similiar to helm on kubernetes]
-- [I want it to become something more mature for a local server. At the moment it runs docker compose as an exec Command. I might view other alternatives]
+- Requires **Docker** and **Docker Compose** (the newer `docker compose` CLI).  
+  It **won't work** with the legacy `docker-compose` binary.
+- Currently, the only feature is the ability to **enable or disable services** within a Compose file — similar in spirit to how Helm manages components in Kubernetes.
+- The goal is for this to evolve into a more **mature tool for managing local servers**.
+  At the moment, it simply wraps `docker compose` using `exec.Command`, but I'm exploring better ways to integrate with the Docker API in the future.
 
 ## 🛠 Tech Stack
 
-- [go/cobra]
-- [go-yaml]
+- go/cobra
+- go-yaml
 - Whatever else I feel like adding as I go
 
 ## 📦 Installation (if it even makes sense right now)
