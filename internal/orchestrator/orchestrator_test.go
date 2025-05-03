@@ -1,4 +1,4 @@
-package api
+package orchestrator
 
 import (
 	"os"
@@ -17,17 +17,18 @@ func TestGetServices(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	services, err := GetServices(content)
+	config, err := models.NewOrcanaOrchestrationConfig(content)
 	if err != nil {
 		t.Fatal(err)
 	}
 
-	assert.Equal(t, 4, len(services))
+	s := append(config.GetEnabledServices(), config.GetDisabledServices()...)
+	assert.Equal(t, 4, len(s))
 
-	firstService := findFirstByName(services, "app_1")
-	secondService := findFirstByName(services, "app_2")
-	thirdService := findFirstByName(services, "app_3")
-	fourthService := findFirstByName(services, "app_4")
+	firstService := findFirstByName(s, "app_1")
+	secondService := findFirstByName(s, "app_2")
+	thirdService := findFirstByName(s, "app_3")
+	fourthService := findFirstByName(s, "app_4")
 
 	assert.Equal(t, "app_1", firstService.Name)
 	assert.Equal(t, "orcana_1", firstService.ContainerName)

@@ -2,6 +2,11 @@ package models
 
 import "errors"
 
+type ComposeContext struct {
+	Name     string             `yaml:"name"`
+	Services map[string]Service `yaml:"services"`
+}
+
 type Service struct {
 	Name          string
 	ContainerName string `yaml:"container_name"`
