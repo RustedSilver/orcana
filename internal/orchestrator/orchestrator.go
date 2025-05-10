@@ -6,6 +6,7 @@ import (
 	"os"
 	"os/exec"
 	"strconv"
+	"sync"
 
 	"github.com/RustedSilver/orcana/internal/models"
 	"github.com/RustedSilver/orcana/internal/utils"
@@ -44,13 +45,25 @@ func (o *OrcanaOrchestrator) Run() {
 		utils.ColorText(utils.Red, strconv.Itoa(len(o.Config.ServiceBank.Disabled))),
 	)
 
-	StartContainers(o.Config.GetEnabledServiceNames()...)
-
-	if len(o.Config.ServiceBank.Disabled) > 0 {
-		TearDownContainers(o.Config.GetDisabledServiceNames()...)
+	var wg sync.WaitGroup
+	for _, name := range o.Config.GetEnabledServiceNames() {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			StartContainers(name)
+		}()
 	}
 
-	// runResult := make(chan bool)
+	for _, name := range o.Config.GetDisabledServiceNames() {
+
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
+			TearDownContainers(name)
+		}()
+	}
+
+	wg.Wait()
 
 }
 
